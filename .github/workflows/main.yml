@@ -19,7 +19,7 @@ jobs:
         run: pip install huggingface_hub
       - name: Push to Hugging Face
         env:
-          HF_TOKEN: ${{ secrets.HF }}
+          HF_TOKEN: ${{ secrets.HG }}
         run: |
           huggingface-cli login --token $HF_TOKEN
           git remote add hf https://huggingface.co/spaces/sunman91/demo2
