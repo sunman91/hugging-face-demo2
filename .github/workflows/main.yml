@@ -7,20 +7,18 @@ on:
   workflow_dispatch:
 
 jobs:
-  push_to_hf:
+  sync-to-hub:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.8'
-      - name: Install Hugging Face Hub
-        run: pip install huggingface_hub
-      - name: Push to Hugging Face
-        env:
-          HF_TOKEN: ${{ secrets.HG }}
-        run: |
-          huggingface-cli login --token $HF_TOKEN
-          git remote add hf https://huggingface.co/spaces/sunman91/demo2
-          git push hf main
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - name: Add remote
+      env:
+        HF: ${{ secrets.HG }}
+      run: |
+        git remote add origin1 https://sunman91:$HF@huggingface.co/spaces/sunman91/demo2
+
+    - name: Push to hub
+      run: |
+        git push origin1 main
