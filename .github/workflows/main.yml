@@ -21,4 +21,4 @@ jobs:
 
     - name: Push to hub
       run: |
-        git push origin1 main
+        git push origin1 main --force
