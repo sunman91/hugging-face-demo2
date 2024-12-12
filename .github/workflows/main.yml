@@ -17,7 +17,8 @@ jobs:
       env:
         HF: ${{ secrets.HF }}
       run: |
-        git remote set-url origin https://sunman91:$HF@huggingface.co/spaces/sunman91/demo2
+        git remote add origin1 https://sunman91:$HF@huggingface.co/spaces/sunman91/demo2
+
     - name: Push to hub
       run: |
-        git push origin main
+        git push origin1 main
